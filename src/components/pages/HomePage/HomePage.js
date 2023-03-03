@@ -1,15 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useMoviesData } from "../../../hooks/useMoviesData";
+import Movies from "../../Movies/Movies/Movies";
+import "swiper/css";
+import FeaturedMovie from "./FeaturedMovie/FeaturedMovie";
 
 const HomePage = () => {
-  const { movies, loading, error } = useMoviesData("/popular");
+  const { movies: popular, loading, error } = useMoviesData("/movie/popular");
+  const { movies: topRated } = useMoviesData("/movie/top_rated");
+  const { movies: latest } = useMoviesData("/movie/upcoming");
+  const { movies: tvPopular } = useMoviesData("/tv/popular");
+  const { movies: tvLatest } = useMoviesData("/tv/top_rated");
 
-  console.log(movies, loading, error);
+  const [featured, setFeatured] = useState();
+
+  useEffect(() => {
+    if (featured) return;
+    featuredMovie();
+  }, [popular]);
+
+  const featuredMovie = () => {
+    if (!popular?.results) return;
+    console.log(popular.results);
+    const result = Math.floor(Math.random() * popular.results.length);
+    setFeatured(popular.results[result]);
+  };
+
   return (
     <div>
-      {movies.map((movie) => (
-        <p key={movies.id}>{movies.title}</p>
-      ))}
+      <Movies portrait title="Popular Movies" movies={popular?.results} />
+      {featured ? <FeaturedMovie featured={featured} /> : <p> "Loading"</p>}
+      <Movies portrait title="Top Rated" movies={topRated?.results} />
+      <Movies portrait title="Upcoming Movies" movies={latest?.results} />
+      <Movies isTvShow title="Popular TV Shows" movies={tvPopular?.results} />
+      <Movies isTvShow title="Top Rated TV Shows" movies={tvLatest?.results} />
     </div>
   );
 };
