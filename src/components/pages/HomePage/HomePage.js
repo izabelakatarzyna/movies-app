@@ -3,6 +3,7 @@ import { useMoviesData } from "../../../hooks/useMoviesData";
 import Movies from "../../Movies/Movies/Movies";
 import "swiper/css";
 import FeaturedMovie from "./FeaturedMovie/FeaturedMovie";
+import Footer from "../../Footer/Footer";
 
 const HomePage = () => {
   const { movies: popular, loading, error } = useMoviesData("/movie/popular");
@@ -33,6 +34,7 @@ const HomePage = () => {
       <Movies portrait title="Upcoming Movies" movies={latest?.results} />
       <Movies isTvShow title="Popular TV Shows" movies={tvPopular?.results} />
       <Movies isTvShow title="Top Rated TV Shows" movies={tvLatest?.results} />
+      <Footer/>
     </div>
   );
 };

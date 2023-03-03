@@ -16,7 +16,7 @@ const MoviePage = () => {
   return (
     <Styled.Wrapper>
       <Styled.Text>
-        <h2>{movie.original_title}</h2>
+        <Styled.Title>{movie.original_title}</Styled.Title>
         <Styled.Subtitle>{movie.overview}</Styled.Subtitle>
         <Styled.Rating>
         <Styled.VoteRating>

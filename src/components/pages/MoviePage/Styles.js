@@ -13,9 +13,16 @@ export const Text = styled.div`
   margin: 40px 60px;
 `;
 
+export const Title = styled.h1`
+  color: orange;
+  font-size: 45px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+`;
 export const Subtitle = styled.p`
-font-weight: lighter;
-`
+  font-weight: lighter;
+`;
 
 export const Rating = styled.div`
   display: block;
@@ -26,8 +33,8 @@ export const Rating = styled.div`
   color: black;
   text-decoration: double;
   font-size: 20px;
- align-items: center;
- padding: 30px;
+  align-items: center;
+  padding: 30px;
 `;
 export const VoteRating = styled.span`
   display: flex;
