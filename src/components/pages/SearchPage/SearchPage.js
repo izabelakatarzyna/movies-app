@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import MainTemplate from "../../templates/MainTemplate";
 import * as Styled from "./Styles";
 
 const SearchPage = () => {
@@ -24,16 +25,22 @@ const SearchPage = () => {
     setQuery(e.target.value);
   };
   return (
-    <Styled.Wrapper>
-      <input value={query} onChange={handleChange} placeholder="Search movie" />
-      <Styled.Text>
-        {!movies.length ? (
-          <Styled.Paragraph>Movie not found</Styled.Paragraph>
-        ) : (
-          movies.map((movie) => <p key={movie.id}>{movie.title}</p>)
-        )}
-      </Styled.Text>
-    </Styled.Wrapper>
+    <MainTemplate>
+      <Styled.Wrapper>
+        <input
+          value={query}
+          onChange={handleChange}
+          placeholder="Search movie"
+        />
+        <Styled.Text>
+          {!movies.length ? (
+            <Styled.Paragraph>Movie not found</Styled.Paragraph>
+          ) : (
+            movies.map((movie) => <p key={movie.id}>{movie.title}</p>)
+          )}
+        </Styled.Text>
+      </Styled.Wrapper>
+    </MainTemplate>
   );
 };
 

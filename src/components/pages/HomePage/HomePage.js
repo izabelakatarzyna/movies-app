@@ -4,6 +4,8 @@ import Movies from "../../Movies/Movies/Movies";
 import "swiper/css";
 import FeaturedMovie from "./FeaturedMovie/FeaturedMovie";
 import Footer from "../../Footer/Footer";
+import SearchPage from "../SearchPage/SearchPage";
+import MainTemplate from "../../templates/MainTemplate";
 
 const HomePage = () => {
   const { movies: popular, loading, error } = useMoviesData("/movie/popular");
@@ -27,15 +29,15 @@ const HomePage = () => {
   };
 
   return (
-    <div>
+    <MainTemplate>
       <Movies portrait title="Popular Movies" movies={popular?.results} />
       {featured ? <FeaturedMovie featured={featured} /> : <p> "Loading"</p>}
       <Movies portrait title="Top Rated" movies={topRated?.results} />
       <Movies portrait title="Upcoming Movies" movies={latest?.results} />
       <Movies isTvShow title="Popular TV Shows" movies={tvPopular?.results} />
       <Movies isTvShow title="Top Rated TV Shows" movies={tvLatest?.results} />
-      <Footer/>
-    </div>
+      <Footer />
+    </MainTemplate>
   );
 };
 
